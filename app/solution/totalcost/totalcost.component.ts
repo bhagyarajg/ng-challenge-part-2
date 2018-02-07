@@ -1,21 +1,20 @@
 import { Component, Input  } from '@angular/core';
-import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
+import { CurrencyConverter } from '../currency-converter/currencyConverter.service';
+
 const DEFAULT_CURRENCY = 'USD';
 @Component({
    moduleId: __moduleName,
    selector: 'total-cost',
    templateUrl: 'totalcost.component.html'
 })
-export class TotalCost implements OnInit {
-    @Input() totalCostInUSD: number;
- //   totalCost: number = 1400;
+export class TotalCost{
+ @Input() totalCostInUSD: number;
+ convertedCost: number = this.totalCostInUSD;
  availableCurrencies = ['USD', 'GBP', 'EUR'];
  selectedCurrency: string = DEFAULT_CURRENCY;
- switchCurrency(currency) {
+ constructor(private currencyConverter: CurrencyConverter){ }
+ changeCurrency(currency) {
     this.selectedCurrency = this.availableCurrencies.includes(currency) ?
       currency : DEFAULT_CURRENCY;
-      console.log(currency);
   }
-    constructor(){ }
-    ngOnInit(){ }
  }

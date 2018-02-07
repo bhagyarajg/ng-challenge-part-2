@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
 import {FaasPlatformService} from '../impl/faasPlatform.service';
-const fnIds:string[] = ['1', '2', '3', '4', '5', '6', '7', '8'];
+const fnIds: string[] = ['1', '2', '3', '4', '5', '6', '7', '8'];
 
 @Component({
    moduleId: __moduleName,
@@ -12,9 +12,7 @@ export class SolutionComponent implements OnInit{
     getFaasCompleteInfo: any[] = [];
     totalCost : number =0;
    // getUsageInfo;
-    constructor(private faasPlatformService: FaasPlatformService){
-      
-    }
+    constructor(private faasPlatformService: FaasPlatformService){ }
     ngOnInit(){
       fnIds.forEach(element => {
         this.faasPlatformService.getFaasInfo$(element)

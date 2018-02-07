@@ -1,5 +1,5 @@
 <div>
-    <h2>Total Cost is: {{totalCostInUSD}}</h2>
+    <h2>Total Cost in USD : {{totalCostInUSD}}</h2>
 </div>
 
 <div class="row">
@@ -10,15 +10,15 @@
             </div>
             <div class="card-block">
                 <div class="card-title">
-                    Select the desired currency in the bottom drop down
+                    Select the desired currency from bottom drop down
                 </div>
                 <div class="card-text">
-                    {{selectedCurrency}}: {{totalCostInUSD |number:'1.2-2' }}
+                    {{selectedCurrency}}: {{totalCostInUSD| convertTocurrency:selectedCurrency |async |number:'1.2-2' }}
                 </div>
             </div>
             <div class="card-footer">
 
-                <select [(ngModel)]="selectedCurrency" (ngModelChange)="switchCurrency($event)">
+                <select [(ngModel)]="selectedCurrency" (ngModelChange)="changeCurrency($event)">
                         <option *ngFor="let c of availableCurrencies" [ngValue]="c"> {{c}} </option>
                       </select>
             </div>
