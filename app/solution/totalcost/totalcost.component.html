@@ -1,0 +1,27 @@
+<div>
+    <h2>Total Cost is: {{totalCostInUSD}}</h2>
+</div>
+
+<div class="row">
+    <div class="col-lg-5 col-md-8 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="card-header">
+                Total Faas Monthly Cost
+            </div>
+            <div class="card-block">
+                <div class="card-title">
+                    Select the desired currency in the bottom drop down
+                </div>
+                <div class="card-text">
+                    {{selectedCurrency}}: {{totalCostInUSD |number:'1.2-2' }}
+                </div>
+            </div>
+            <div class="card-footer">
+
+                <select [(ngModel)]="selectedCurrency" (ngModelChange)="switchCurrency($event)">
+                        <option *ngFor="let c of availableCurrencies" [ngValue]="c"> {{c}} </option>
+                      </select>
+            </div>
+        </div>
+    </div>
+</div>
