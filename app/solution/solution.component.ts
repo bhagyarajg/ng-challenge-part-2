@@ -16,13 +16,13 @@ export class SolutionComponent implements OnInit{
     ngOnInit(){
       fnIds.forEach(element => {
         this.faasPlatformService.getFaasInfo$(element)
-        .subscribe(info => {//console.log(info);
+        .subscribe(info => {
             this.getFaasCompleteInfo.push(info)},
                   error => console.log(error));
                 });
     this.getFaasCompleteInfo.forEach(element => {
         this.faasPlatformService.getFaasUsage$(element.id)
-        .subscribe(usage => {//console.log(usage);
+        .subscribe(usage => {
             element.totalMonthlyCost = usage.totalMonthlyInvocations * element.invocationCost +
             usage.totalMonthlyRuntime * element.runtimeCost; 
             this.totalCost += element.totalMonthlyCost;

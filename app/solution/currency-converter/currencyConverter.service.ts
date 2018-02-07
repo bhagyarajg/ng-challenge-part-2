@@ -9,7 +9,7 @@ import 'rxjs/add/observable/throw';
 export class CurrencyConverter {
     constructor(private http: Http){}
     convertToCurrency(value, toCurrency): Observable <any>{
-         if(toCurrency === 'USD'){
+         if (toCurrency === 'USD'){
             return Observable.of(value);
          } else {
          return this.http.get('https://api.fixer.io/latest?base=USD')
